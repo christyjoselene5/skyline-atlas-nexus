@@ -1,0 +1,16 @@
+{
+  "name": "skyline-atlas-nexus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Workforce Management + AI Decision Platform for travel and hospitality teams.",
+  "scripts": {
+    "cap:sync": "npx cap sync",
+    "cap:open:android": "npx cap open android",
+    "cap:add:android": "npx cap add android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  }
+}

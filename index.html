@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skyline Atlas Nexus | Workforce Management + AI Decision Platform</title>
+    <meta
+      name="description"
+      content="Workforce management and AI decision platform for travel and hospitality teams."
+    />
+    <meta name="theme-color" content="#0d6c74" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Atlas Nexus" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon-192.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icons/icon-192.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <main class="app-stage">
+        <section class="login-screen" id="loginScreen">
+          <div class="login-hero">
+            <p class="eyebrow">Skyline Atlas Nexus</p>
+            <h1>Workforce management and AI decisions for travel and hospitality teams.</h1>
+            <p class="hero-copy">
+              Coordinate employees, evaluate travel readiness, surface AI-led
+              staffing decisions, and prepare future workforce analytics from
+              one operating platform.
+            </p>
+            <div class="hero-highlights">
+              <div>
+                <span>Workforce signals</span>
+                <strong>12 live staffing indicators</strong>
+              </div>
+              <div>
+                <span>Decision models</span>
+                <strong>7 monitored rule sets</strong>
+              </div>
+              <div>
+                <span>Platform focus</span>
+                <strong>Travel + hospitality workforce ops</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="login-panel">
+            <div class="panel-head">
+              <p class="eyebrow">Platform Access</p>
+              <h2>Enter the workforce command center</h2>
+              <p>Use the configured credentials below to access staffing, travel, and AI decision workflows.</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+              <label>
+                <span>Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  value="christy.joselene@skylineatlas.com"
+                  autocomplete="username"
+                  required
+                />
+              </label>
+              <label>
+                <span>Password</span>
+                <input
+                  type="password"
+                  name="password"
+                  value="ChristyHR@2026"
+                  autocomplete="current-password"
+                  required
+                />
+              </label>
+              <button type="submit">Enter Command Center</button>
+              <p class="form-note">Demo credentials: christy.joselene@skylineatlas.com / ChristyHR@2026</p>
+              <p id="loginError" class="login-error" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="dashboard hidden" id="dashboard">
+          <section class="welcome-banner">
+            <div>
+              <p class="eyebrow">Signed In Profile</p>
+              <h2>Welcome, Christy Joselene</h2>
+              <p class="welcome-copy">
+                You are viewing the workforce AI platform as HR Manager with
+                employee ID SA-HR-24019.
+              </p>
+            </div>
+          </section>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Workforce Management + AI Decision Platform</p>
+              <h1>Travel and Hospitality Workforce Overview</h1>
+            </div>
+            <div class="topbar-actions">
+              <div class="agent-pill">
+                <span class="agent-status"></span>
+                <div>
+                  <strong id="agentName">Christy Joselene</strong>
+                  <small id="agentRole">HR Manager</small>
+                </div>
+              </div>
+              <button id="aiRefreshButton" class="secondary-button" type="button">
+                Refresh AI Decisions
+              </button>
+              <button id="logoutButton" class="ghost-button" type="button">
+                Log Out
+              </button>
+            </div>
+          </header>
+
+          <section class="stats-grid" id="statsGrid"></section>
+
+          <section class="ops-panel employee-card-panel">
+            <div class="section-head">
+              <div>
+                  <p class="eyebrow">Platform Identity</p>
+                  <h2>Verified operator profile</h2>
+              </div>
+              <span class="section-chip">Lab Access</span>
+            </div>
+            <div class="employee-id-card">
+              <div class="employee-id-top">
+                <div>
+                  <span class="segment-label">Employee Name</span>
+                  <strong id="employeeIdName">Christy Joselene</strong>
+                </div>
+                <div>
+                  <span class="segment-label">Employee ID</span>
+                  <strong id="employeeIdCode">SA-HR-24019</strong>
+                </div>
+              </div>
+              <div class="employee-id-grid">
+                <div>
+                  <span class="segment-label">Department</span>
+                  <p>Human Resources</p>
+                </div>
+                <div>
+                  <span class="segment-label">Designation</span>
+                  <p id="employeeDesignation">HR Manager</p>
+                </div>
+                <div>
+                  <span class="segment-label">Access Level</span>
+                  <p>People Ops and Travel Admin</p>
+                </div>
+                <div>
+                  <span class="segment-label">Status</span>
+                  <p>Active employee</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="ops-grid experiment-grid">
+            <section class="ops-panel experiment-panel">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">AI Decision Center</p>
+                  <h2>Scenario controls</h2>
+                </div>
+                <span class="section-chip" id="experimentModeLabel">Baseline</span>
+              </div>
+              <div class="experiment-controls">
+                <button type="button" class="secondary-button experiment-toggle" data-mode="Baseline">
+                  Baseline
+                </button>
+                <button type="button" class="secondary-button experiment-toggle" data-mode="Policy Stress Test">
+                  Policy Stress Test
+                </button>
+                <button type="button" class="secondary-button experiment-toggle" data-mode="VIP Mobility Pilot">
+                  VIP Mobility Pilot
+                </button>
+              </div>
+              <div class="experiment-notes">
+                <p id="experimentSummary">
+                  Baseline mode compares active workforce travel files against the current operating flow.
+                </p>
+              </div>
+            </section>
+
+            <section class="ops-panel experiment-panel">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Decision Feed</p>
+                  <h2>What the AI layer is evaluating</h2>
+                </div>
+              </div>
+              <div id="observationFeed" class="observation-feed"></div>
+            </section>
+          </section>
+
+          <section class="ops-grid analytics-grid">
+            <section class="ops-panel analytics-panel">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">AI Recommendations</p>
+                  <h2>Decision recommendations for operations</h2>
+                </div>
+              </div>
+              <div id="aiRecommendationFeed" class="observation-feed"></div>
+            </section>
+
+            <section class="ops-panel analytics-panel">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Future Analytics</p>
+                  <h2>Workforce analytics dashboard preview</h2>
+                </div>
+              </div>
+              <div id="futureAnalyticsGrid" class="future-analytics-grid"></div>
+            </section>
+          </section>
+
+          <section class="ops-grid">
+            <section class="ops-panel task-panel">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Priority Queue</p>
+                  <h2>What the workforce platform is monitoring</h2>
+                </div>
+                <span class="section-chip" id="taskCount">0 open</span>
+              </div>
+              <div id="taskList" class="task-list"></div>
+            </section>
+
+            <section class="ops-panel create-panel">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">New Travel Assignment</p>
+                  <h2>Create a workforce mobility file</h2>
+                </div>
+              </div>
+              <form id="bookingForm" class="create-form">
+                <label>
+                  <span>Traveler name</span>
+                  <input type="text" name="traveler" required />
+                </label>
+                <label>
+                  <span>Company</span>
+                  <input type="text" name="company" required />
+                </label>
+                <label>
+                  <span>Destination</span>
+                  <input type="text" name="destination" required />
+                </label>
+                <label>
+                  <span>Departure</span>
+                  <input type="date" name="departure" required />
+                </label>
+                <label>
+                  <span>Package</span>
+                  <input type="text" name="packageType" required />
+                </label>
+                <label>
+                  <span>Trip budget</span>
+                  <input type="number" name="amount" min="0" step="50" required />
+                </label>
+                <label>
+                  <span>Hotel</span>
+                  <input type="text" name="hotel" required />
+                </label>
+                <label>
+                  <span>Status</span>
+                  <select name="status">
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Action Needed">Action Needed</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                </label>
+                <button type="submit" class="primary-button">Add Mobility File</button>
+                <p id="bookingFormMessage" class="form-note" aria-live="polite"></p>
+              </form>
+            </section>
+          </section>
+
+          <section class="ops-panel employee-record-panel">
+            <div class="section-head">
+                <div>
+                  <p class="eyebrow">Employee Record</p>
+                  <h2>Add a workforce record</h2>
+                </div>
+              </div>
+            <form id="employeeRecordForm" class="create-form">
+              <label>
+                <span>Employee name</span>
+                <input type="text" name="traveler" required />
+              </label>
+              <label>
+                <span>Employee ID</span>
+                <input type="text" name="employeeId" placeholder="EMP-1050" required />
+              </label>
+              <label>
+                <span>Position</span>
+                <input type="text" name="position" required />
+              </label>
+              <label>
+                <span>Department</span>
+                <input type="text" name="department" required />
+              </label>
+              <label>
+                <span>Company</span>
+                <input type="text" name="company" value="Skyline Atlas" required />
+              </label>
+              <label>
+                <span>Destination</span>
+                <input type="text" name="destination" />
+              </label>
+              <label>
+                <span>Departure</span>
+                <input type="date" name="departure" />
+              </label>
+              <label>
+                <span>Status</span>
+                <select name="status">
+                  <option value="Pending">Pending</option>
+                  <option value="Confirmed">Confirmed</option>
+                  <option value="Action Needed">Action Needed</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </label>
+              <label>
+                <span>Travel purpose</span>
+                <input type="text" name="packageType" value="Employee mobility review" />
+              </label>
+              <label>
+                <span>Budget</span>
+                <input type="number" name="amount" min="0" step="50" />
+              </label>
+              <label>
+                <span>Hotel</span>
+                <input type="text" name="hotel" />
+              </label>
+              <label>
+                <span>Notes</span>
+                <input type="text" name="notes" placeholder="Employee travel note" />
+              </label>
+              <button type="submit" class="primary-button">Add Employee Record</button>
+              <p id="employeeRecordMessage" class="form-note" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="ops-panel employee-directory-panel">
+            <div class="section-head">
+                <div>
+                  <p class="eyebrow">Employee Directory</p>
+                  <h2>Check workforce travel and hospitality assignments</h2>
+                </div>
+                <span class="section-chip" id="employeeDirectoryCount">0 travelers</span>
+              </div>
+            <div class="directory-toolbar">
+              <label class="search-field">
+                <span class="sr-only">Search employees</span>
+                <input
+                  type="search"
+                  id="employeeSearchInput"
+                  placeholder="Search by employee name or designation"
+                />
+              </label>
+            </div>
+            <div id="employeeDirectory" class="employee-directory"></div>
+          </section>
+
+          <section class="workspace-grid">
+            <div class="workspace-main">
+              <section class="toolbar">
+                <div class="toolbar-copy">
+                  <h2>Mobility Files</h2>
+                  <p>
+                    Search workforce mobility records, update status, and jump
+                    into employee assignment details.
+                  </p>
+                </div>
+
+                <div class="toolbar-controls">
+                  <label class="search-field">
+                    <span class="sr-only">Search bookings</span>
+                    <input
+                      type="search"
+                      id="searchInput"
+                      placeholder="Search by employee, destination, or mobility file ID"
+                    />
+                  </label>
+
+                  <label class="filter-field">
+                    <span class="sr-only">Filter bookings</span>
+                    <select id="statusFilter">
+                      <option value="all">All statuses</option>
+                      <option value="Confirmed">Confirmed</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Action Needed">Action Needed</option>
+                      <option value="Completed">Completed</option>
+                    </select>
+                  </label>
+                </div>
+              </section>
+
+              <section class="bookings-table-wrap">
+                <table class="bookings-table">
+                  <thead>
+                    <tr>
+                      <th>Booking</th>
+                      <th>Traveler</th>
+                      <th>Route</th>
+                      <th>Departure</th>
+                      <th>Status</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bookingRows"></tbody>
+                </table>
+              </section>
+            </div>
+
+            <aside class="workspace-side">
+              <section class="detail-panel">
+                <div class="detail-head">
+                  <p class="eyebrow">Workforce Assignment Details</p>
+                  <h2 id="detailName">Select a booking</h2>
+                  <p id="detailSummary">
+                    Choose a mobility file to view employee role, department,
+                    itinerary notes, travel status, and decision context.
+                  </p>
+                </div>
+
+                <div id="detailContent" class="detail-content empty-state">
+                  No booking selected yet.
+                </div>
+              </section>
+            </aside>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "appId": "com.skylineatlas.nexus",
+  "appName": "Skyline Atlas Nexus",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
